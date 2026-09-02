@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Create HTML') {
+            steps {
+                writeFile file: 'index.html', text: '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenkins HTML</title>
+</head>
+<body>
+    <h1>Hello from Jenkins!</h1>
+    <p>This HTML file was created using Jenkins.</p>
+</body>
+</html>
+'''
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'HTML file created successfully'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'HTML deployment completed'
+            }
+        }
+    }
+}
